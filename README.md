@@ -1,18 +1,17 @@
-# BFM-PY - BIOS Flash Manager (Python)
+# bfm - Build and Flash Manager
 
-Python equivalent of the nushell `bfm.nu` script for building, saving, and flashing BIOS bootleg binaries.
+Build, flash and manage BIOS binaries using a single command
 
 ## Features
 
 - Build BIOS binaries for different platforms (U60, U61, U65, X60)
-- Manage version numbers in BiosId.env files
+- Manage version feature numbers in BiosId.env files
 - Save bootlegs to local and network locations
 - Flash binaries using DediProg
-- Cross-platform colored terminal output
 
 ## Usage
 
-```bash
+```sh
 python bfm.py [platform] [options]
 ```
 
@@ -33,7 +32,8 @@ python bfm.py [platform] [options]
 - `-t, --tree TREE` - Specify a specific tree to use
 - `-p, --path PATH` - Manually specify a filepath for a binary to flash
 - `-a, --append STRING` - Append a string to the bootleg basename
-- `-d, --no-decrement` - Don't decrement the feature number
+- `-o, --output OUTPUT` - Manually specify a folder to save the binary in
+- `-d, --decrement` - Decrement the feature number
 - `-v, --set-version VERSION` - Set the feature version number directly
 
 ### Examples

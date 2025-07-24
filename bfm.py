@@ -14,8 +14,10 @@ from pathlib import Path
 from typing import Dict, Optional, Any
 import glob
 
-DEV_LOC = r'C:\Users\felixb\BIOS' # Local trees in here
-LOCAL_BOOTLEGS = r'C:\Users\felixb\BIOS\Bootlegs'
+
+# Set folder locations where repositories and bootlegs are stored
+
+DEV_LOC = r'C:\Users\felixb\BIOS'
 NET_LOC = r'\\wks-file.ftc.rd.hpicorp.net\MAIN_LAB\SHARES\LAB\Brendon Felix\Bootlegs'
 
 class Colors:
@@ -305,7 +307,36 @@ def main():
     """Main function"""
     parser = argparse.ArgumentParser(
         description="Build, save, and flash a bootleg binary",
-        formatter_class=argparse.RawDescriptionHelpFormatter
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  %(prog)s --build --flash # or (%(prog)s -bf)
+    Build a Springs (X60 - default) debug binary and automatically flash using DediProg CLI
+
+  %(prog)s U60 -bsf
+    Build a Glacier (U60) debug binary, save to Glacier bootlegs folder and flash using DediProg
+
+  %(prog)s U61 -fl
+    Flash the most recent U61 binary in the Blizzard bootlegs folder
+
+  %(prog)s -bdn --tree "HpSpringsWks-Test"
+    Decrement VERSION_FEATURE, build a Springs (X60) binary using the specified tree, and save to the network drive
+
+  %(prog)s -bs -v 89 -a "MY_BOOTLEG"
+    Set VERSION_FEATURE to 89, build a Springs binary, and save as "X60_8900<VERSION_MINOR>_64_MY_BOOTLEG.bin" in bootlegs folder
+
+  %(prog)s --path "C:\\path\\to\\binary.bin" --flash
+    Flash the specified binary using DediProg
+
+  %(prog)s U61 -bsf -o "C:\\different\\bootlegs\\folder"
+    Build a Winters (U61) binary, save to a custom output folder, and flash using DediProg
+
+Platforms:
+  U60 - Glacier
+  U61 - Winters  
+  U65 - Avalanche
+  X60 - Springs (default)
+        """
     )
     
     parser.add_argument('platform', nargs='?', 
