@@ -1,0 +1,3 @@
+# External dependencies:
+# - dpcmd: DediProg command-line tool (required for flashing BIOS binaries)
+#   Must be installed separately and available in system PATH
